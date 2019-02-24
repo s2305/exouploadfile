@@ -60,12 +60,17 @@ class CustomDropZone extends React.PureComponent
 
     render()
     {
+        const displayCount = this.props.nbrDocs > 0 ? (<p>There're {this.props.nbrDocs} files on server</p>) : ""
+
         return (
                 <div>
                     <div style={this.styleDZ} onDrop={this.handleOnDrop} onDragOver={this.handleDragOver}></div>
                     <p>{this.props.fileNameToDisplay}</p>
                     <button onClick={()=>{
                                       this.props.uploadFile(this.fileToDownload);}}>DOWNLOAD</button>
+                    <hr/>
+                    {displayCount}
+
                 </div>
                    )
     }
@@ -73,8 +78,8 @@ class CustomDropZone extends React.PureComponent
 }
 
 const mapState = state => ({
-    fileNameToDisplay: state.medicalDoc
-
+    fileNameToDisplay: state.medicalDoc,
+    nbrDocs : state.nbrDocs
 })
 
 const mapDispatch = (dispatch) => ({
