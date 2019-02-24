@@ -66,8 +66,8 @@ class CustomDropZone extends React.PureComponent
                 <div>
                     <div style={this.styleDZ} onDrop={this.handleOnDrop} onDragOver={this.handleDragOver}></div>
                     <p>{this.props.fileNameToDisplay}</p>
-                    <button onClick={()=>{
-                                      this.props.uploadFile(this.fileToDownload);}}>DOWNLOAD</button>
+                    <button onClick={()=>{ if(this.fileToDownload){
+                                      this.props.uploadFile(this.fileToDownload)}else{alert("veuillez selectionner un fichier")}}}>DOWNLOAD</button>
                     <hr/>
                     {displayCount}
 
